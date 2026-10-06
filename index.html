@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydration Police</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>HYDRATION POLICE</h1>
+        <p class="subtitle">
+            Your personal hydration enforcement system.
+        </p>
+    <div class="status-box">
+        <span id="statusDot">●</span>
+        <span id="statusText">HOUNDING ENABLED</span>
+    </div>
+
+<button id="toggleButton">
+    TURN OFF
+</button>
+
+<button id="testButton">
+    TEST REMINDER
+</button>
+
+<p class="warning">
+    Failure to hydrate will result in severe disappointment.
+</p>
+</div>
+
+<script>
+    const toggleButton = document.getElementById("toggleButton");
+    const statusText = document.getElementById("statusText");
+    const statusDot = document.getElementById("statusDot");
+    const testButton = document.getElementById("testButton");
+
+    let enabled = true;
+
+    toggleButton.addEventListener("click", () => {
+        enabled = !enabled;
+
+        window.electron.setReminders(enabled);
+        
+        if (enabled) {
+            statusText.textContent = "HOUNDING ENABLED";
+            statusDot.textContent = "●";
+            toggleButton.textContent = "TURN OFF";
+        } else {
+            statusText.textContent = "HOUNDING DISABLED";
+            statusDot.textContent = "○";
+            toggleButton.textContent = "TURN ON";
+        }
+    });
+
+    testButton.addEventListener("click", () => {
+        window.electron.testReminder();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HYDRATE</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eaf8ff;
+            color: #17324d;
+            text-align: center;
+        }
+
+        .container {
+            padding: 30px 20px;
+        }
+
+        .water {font-size: 55px;
+        }
+
+        h1 {
+            margin: 10px 0;
+            font-size: 25px;
+        }
+
+        #message {
+            font-size: 16px;
+            font-weight: bold;
+            min-height: 45px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            background: #4da9d8;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="water">💧</div>
+        <h1>HYDRATION CHECK</h1>
+        <p id="message"></p>
+        <button id="doneButton">
+            I DRANK WATER
+        </button>
+    </div>
+
+    <script>
+        const messages = [
+            "DRINK WATER.",
+            "...bro, drink water",
+            "DRINK SOME FUCKING WATER",
+            "HYDRATE OR DIE",
+            "THE COUNCIL DEMANDS WATER!!!",
+            "I think you know what time it is.....DRINK. WATER.",
+            "DEHYDRATION DETECTED. IMMEDIATE HYDRATION REQUIRED.",
+            "Drinking water is NOT a suggestion.",
+            "Get the fuck up off your ass and drink some water.",
+            "You are a disgrace to the human race. Drink water.",
+        ];
+
+        const message =
+            messages[Math.floor(Math.random() * messages.length)];
+
+        document.getElementById("message").textContent = message;
+        document.getElementById("doneButton").addEventListener("click", () => {
+            window.electron.closeReminder();
+        });
+    </script>
+</body>
+</html>
